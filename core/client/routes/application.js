@@ -14,7 +14,7 @@ ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, Shortcut
 
     afterModel: function (model, transition) {
         if (this.get('session').isAuthenticated) {
-            transition.send('loadServerNotifications');
+            transition.send('loadAPIData');
         }
     },
 
@@ -50,7 +50,7 @@ ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, Shortcut
         },
 
         signedIn: function () {
-            this.send('loadServerNotifications', true);
+            this.send('loadAPIData', true);
         },
 
         sessionAuthenticationFailed: function (error) {
@@ -128,14 +128,17 @@ ApplicationRoute = Ember.Route.extend(SimpleAuth.ApplicationRouteMixin, Shortcut
             key.setScope('default');
         },
 
-        loadServerNotifications: function (isDelayed) {
+        loadAPIData: function (isDelayed) {
             var self = this;
-
             if (this.session.isAuthenticated) {
                 this.store.findAll('notification').then(function (serverNotifications) {
                     serverNotifications.forEach(function (notification) {
                         self.notifications.handleNotification(notification, isDelayed);
                     });
+                });
+                this.store.find('setting', {type: 'blog,theme'}).then(function (records) {
+                    var settings = records.get('firstObject');
+                    self.feature.setSettings(settings.get('labs'));
                 });
             }
         },
