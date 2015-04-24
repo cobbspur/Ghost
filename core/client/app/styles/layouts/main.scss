@@ -1,0 +1,115 @@
+
+
+// Layout
+.gh-viewport {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.gh-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 260px;
+    border-right: #E1E1E1 1px solid;
+    background: #F6F6F6;
+}
+
+.gh-main {
+    flex-grow: 1;
+    padding: 2% 5%;
+    overflow-y: auto;
+}
+
+//GH-NAV
+
+.gh-nav-menu {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+.gh-nav-menu:hover { cursor: pointer; }
+
+.gh-nav-menu-icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    width: 34px;
+    height: 34px;
+    background-size: 34px;
+    background-color: #222;
+    border-radius: 4px;
+}
+
+.gh-nav-menu-details {
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.gh-nav-menu-details-blog {
+    font-size: 1.6rem;
+    line-height: 1.1em;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gh-nav-menu-details-user {
+    font-size: 1.3rem;
+    line-height: 1.1em;
+    color: #828282;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gh-nav-body {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.gh-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+}
+
+.gh-nav-list-h {
+    margin-top: 15px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #828282;
+    font-size: 1.2rem;
+    line-height: 1.1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.gh-nav-list a {
+    display: block;
+    padding: 5px 10px;
+    color: #656565;
+    border-radius: 4px;
+    transition: none;
+}
+
+.gh-nav-list a:hover,
+.gh-nav-list .current a {
+    color: $blue;
+    background: #E4F2FF;
+}
+
+.gh-nav-list .current a {
+    color: $blue;
+}
+
+.gh-nav-footer {
+    flex-shrink: 0;
+    padding: 15px 20px;
+    border-top: #E1E1E1 1px solid;
+}
