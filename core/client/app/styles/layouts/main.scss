@@ -16,8 +16,8 @@
 }
 
 .gh-main {
+    position: relative;
     flex-grow: 1;
-    padding: 2% 5%;
     overflow-y: auto;
 }
 
@@ -141,15 +141,14 @@
     transition: none;
 }
 
-.gh-nav-list a:hover,
-.gh-nav-list .current a {
-    color: $darkgrey;
-    background: lighten($blue, 30%);
-}
-
-.gh-nav-list .current a {
+.gh-nav-list .active {
     color: #fff;
     background: lighten($blue, 10%);
+}
+
+.gh-nav-list a:not(.active):hover {
+    color: $darkgrey;
+    background: lighten($blue, 30%);
 }
 
 .gh-nav-list i {
