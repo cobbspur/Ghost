@@ -1,7 +1,9 @@
 <div class="gh-viewport">
 <a class="sr-only sr-only-focusable" href="#gh-main">Skip to main content</a>
 
-{{partial "nav-menu"}}
+{{#unless signedOut}}
+    {{partial "nav-menu"}}
+{{/unless}}
 
 {{gh-notifications location="top" notify="topNotificationChange"}}
 

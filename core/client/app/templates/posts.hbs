@@ -1,11 +1,5 @@
 <div class="page-content">
     <section class="content-list js-content-list {{if postListFocused 'keyboard-focused'}}">
-        <header class="floatingheader">
-            <section class="content-filter">
-                <small>All Posts</small>
-            </section>
-            {{#link-to "editor.new" class="btn btn-green" title="New Post"}}<span class="hidden">New Post</span>{{/link-to}}
-        </header>
         {{#view "paginated-scroll-box" tagName="section" classNames="content-list-content js-content-scrollbox"}}
         <ol class="posts-list">
             {{#each post in controller itemController="posts/post" itemView="post-item-view" itemTagName="li"}}
