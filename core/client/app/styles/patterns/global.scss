@@ -128,7 +128,7 @@ hr {
 }
 
 dl {
-    @include baseline;
+    margin: 1.6em 0;;
 
     dt {
         float: left;
@@ -149,7 +149,7 @@ dl {
 }
 
 blockquote {
-    @include baseline;
+    margin: 1.6em 0;;
     padding: 0 1.6em 0 1.6em;
     border-left: #e1e1e1 0.6em solid;
 
@@ -192,7 +192,7 @@ code, tt {
 }
 
 pre {
-    @include baseline;
+    margin: 1.6em 0;;
     background: lighten(#e1e1e1, 2%);
     width: 100%;
     padding: 10px;
@@ -245,8 +245,11 @@ img {
 // Utility Classes
 // --------------------------------------------------
 
-.clearfix {
-    @include clearfix;
+.clearfix,
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .wrapper {
