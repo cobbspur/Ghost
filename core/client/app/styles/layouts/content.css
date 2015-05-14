@@ -160,7 +160,7 @@
 
 @media (min-width: 901px) {
     .content-list .active {
-        background: color(#e1e1e1 tint(9%));
+        background: color(#e1e1e1 lightness(+9%));
     }
 }
 

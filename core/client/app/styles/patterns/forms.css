@@ -206,7 +206,7 @@ textarea {
 
 .for-checkbox label input:checked + .input-toggle-component {
     background: var(--green);
-    border-color: color(var(--green) shade(10%));
+    border-color: color(var(--green) lightness(-10%));
 }
 
 .for-checkbox label input:checked + .input-toggle-component:before {
@@ -236,7 +236,7 @@ textarea {
 
 .for-radio label input:checked + .input-toggle-component {
     background: var(--green);
-    border-color: color(var(--green) shade(10%));
+    border-color: color(var(--green) lightness(-10%));
 }
 
 .for-radio label input:checked + .input-toggle-component:before {

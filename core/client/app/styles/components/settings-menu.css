@@ -144,7 +144,7 @@ body.settings-menu-expanded .settings-menu-container {
 
 .settings-menu-content .tag-delete-button:hover,
 .settings-menu-content .tag-delete-button:hover:before {
-    color: color(var(--red) shade(10%));
+    color: color(var(--red) lightness(-10%));
 }
 
 .settings-menu-content .nav-list {

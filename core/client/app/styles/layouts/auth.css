@@ -25,7 +25,7 @@
     font-weight: 200;
     border: none;
     color: #fff;
-    background: color(var(--darkgrey) tint(10%));
+    background: color(var(--darkgrey) lightness(+10%));
     box-shadow: none;
     margin: 0;
     position: relative;
@@ -37,7 +37,7 @@
 .ghost-forgotten input:focus,
 .ghost-reset input:focus {
     border: none;
-    background: color(var(--darkgrey) tint(15%));
+    background: color(var(--darkgrey) lightness(+15%));
 }
 
 .ghost-login input:-webkit-autofill,
@@ -74,7 +74,7 @@
 
 .login-form {
     max-width: 530px;
-    color: color(var(--midgrey) tint(15%));
+    color: color(var(--midgrey) lightness(+15%));
     display: table-cell;
     vertical-align: middle;
 }
@@ -160,18 +160,18 @@
     margin: 0;
     padding: 0;
     font-size: 1.25rem;
-    color: color(var(--midgrey) shade(10%));
+    color: color(var(--midgrey) lightness(-10%));
     text-transform: none;
     letter-spacing: 0;
 }
 
 .login-form a {
-    color: color(var(--midgrey) shade(10%));
+    color: color(var(--midgrey) lightness(-10%));
     font-size: 0.9em;
 }
 
 .login-form a:hover {
-    color: color(var(--midgrey) tint(5%));
+    color: color(var(--midgrey) lightness(+5%));
     text-decoration: none;
 }
 
@@ -182,7 +182,7 @@
 .signup-form,
 .reset-form {
     max-width: 280px;
-    color: color(var(--midgrey) tint(15%));
+    color: color(var(--midgrey) lightness(+15%));
     display: table-cell;
     vertical-align: middle;
 }
@@ -198,7 +198,7 @@
 .reset-form .password-wrap {
     position: relative;
     margin: 0 0 1em 0;
-    background: color(var(--darkgrey) tint(10%));
+    background: color(var(--darkgrey) lightness(+10%));
     float: left;
     display: table;
 }
@@ -266,7 +266,7 @@
 
 .forgotten-form {
     max-width: 280px;
-    color: color(var(--midgrey) tint(15%));
+    color: color(var(--midgrey) lightness(+15%));
     display: table-cell;
     vertical-align: middle;
 }

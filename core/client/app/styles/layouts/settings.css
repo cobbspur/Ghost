@@ -115,7 +115,7 @@
 }
 
 .navigation-item-action .icon-add:hover:before {
-    background: color(var(--green) shade(10%));
+    background: color(var(--green) lightness(-10%));
 }
 
 

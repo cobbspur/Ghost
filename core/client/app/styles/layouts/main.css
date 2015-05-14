@@ -149,12 +149,12 @@
 
 .gh-nav-list .active {
     color: #fff;
-    background: color(var(--blue) tint(10%));
+    background: color(var(--blue) lightness(+10%));
 }
 
 .gh-nav-list a:not(.active):hover {
     color: var(--darkgrey);
-    background: color(var(--blue) tint(30%));
+    background: color(var(--blue) lightness(+30%));
 }
 
 .gh-nav-list i {

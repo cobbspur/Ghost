@@ -81,7 +81,7 @@
 }
 
 .about-help .btn:hover {
-    background: color(#A1ADB3 shade(10%));
+    background: color(#A1ADB3 lightness(-10%));
 }
 
 .about-help .btn:nth-child(1) {

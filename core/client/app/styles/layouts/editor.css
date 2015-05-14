@@ -188,7 +188,7 @@
     font-size: 1.6rem;
     line-height: 2.5rem;
     font-family: var(--font-family-mono);
-    color: color(var(--darkgrey) tint(10%));
+    color: color(var(--darkgrey) lightness(+10%));
 }
 
 .editor .markdown-editor:focus {
@@ -354,7 +354,7 @@
 /* ---------------------------------------------------------- */
 
 body.zen {
-    background: color(#e1e1e1 tint(3%));
+    background: color(#e1e1e1 lightness(+3%));
 }
 
 body.zen .usermenu {

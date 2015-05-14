@@ -49,7 +49,7 @@ a.user-list-item {
 
 @media (min-width: 601px) {
     a.user-list-item:hover {
-        background: color(#e1e1e1 tint(10%));
+        background: color(#e1e1e1 lightness(+10%));
     }
     a.user-list-item:last-of-type:hover {
         box-shadow: inset 0px -1px 0px #e1e1e1;

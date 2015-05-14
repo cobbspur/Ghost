@@ -84,7 +84,7 @@
 .settings-tag .tag-edit-button:hover,
 .settings-tag .tag-edit-button:focus,
 .settings-tag .tag-edit-button:active {
-    background: color(#e1e1e1 tint(10%));
+    background: color(#e1e1e1 lightness(+10%));
 }
 
 .settings-tag:last-of-type:hover .tag-edit-button {

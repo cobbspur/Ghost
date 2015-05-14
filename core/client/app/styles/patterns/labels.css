@@ -59,7 +59,7 @@ a.label:focus {
 
 .label-default[href]:hover,
 .label-default[href]:focus {
-    background-color: color(#A1ADB3 shade(10%));
+    background-color: color(#A1ADB3 lightness(-10%));
 }
 
 .label-alt {
@@ -73,7 +73,7 @@ a.label:focus {
 
 .label-alt[href]:hover,
 .label-alt[href]:focus {
-    background-color: color(#666 shade(10%));
+    background-color: color(#666 lightness(-10%));
 }
 
 .label-blue {
@@ -87,7 +87,7 @@ a.label:focus {
 
 .label-blue[href]:hover,
 .label-blue[href]:focus {
-    background-color: color(var(--blue) shade(10%));
+    background-color: color(var(--blue) lightness(-10%));
 }
 
 .label-green {
@@ -101,7 +101,7 @@ a.label:focus {
 
 .label-green[href]:hover,
 .label-green[href]:focus {
-    background-color: color(var(--green) shade(10%));
+    background-color: color(var(--green) lightness(-10%));
 }
 
 .label-red {
@@ -115,5 +115,5 @@ a.label:focus {
 
 .label-red[href]:hover,
 .label-red[href]:focus {
-    background-color: color(var(--red) shade(10%));
+    background-color: color(var(--red) lightness(-10%));
 }
