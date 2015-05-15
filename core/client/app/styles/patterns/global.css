@@ -221,7 +221,6 @@ pre {
 pre code,
 pre tt {
     font-size: inherit;
-    white-space: -moz-pre-wrap;
     white-space: pre-wrap;
     background: transparent;
     border: none;
