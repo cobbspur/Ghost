@@ -86,6 +86,13 @@ var _              = require('lodash'),
                         // **Note:** Without this option specified express won't be reloaded
                         nospawn: true
                     }
+                },
+                csscomb: {
+                    files: ['core/client/app/styles/**/*.css'],
+                    tasks: ['shell:csscombfix'],
+                    options: {
+                        livereload: true
+                    }
                 }
             },
 
@@ -336,8 +343,12 @@ var _              = require('lodash'),
                     command: 'npm shrinkwrap'
                 },
 
-                csscomb: {
+                csscombfix: {
                     command: path.resolve(cwd + '/node_modules/.bin/csscomb -c core/client/app/styles/csscomb.json -v core/client/app/styles')
+                },
+
+                csscomblint: {
+                    command: path.resolve(cwd + '/node_modules/.bin/csscomb -c core/client/app/styles/csscomb.json -lv core/client/app/styles')
                 }
             },
 
@@ -611,7 +622,7 @@ var _              = require('lodash'),
         //
         // `grunt lint` will run the linter and the code style checker so you can make sure your code is pretty
         grunt.registerTask('lint', 'Run the code style checks and linter',
-            ['jshint', 'jscs']
+            ['jshint', 'jscs', 'shell:csscomblint']
         );
 
         // ### test-setup *(utility)(
