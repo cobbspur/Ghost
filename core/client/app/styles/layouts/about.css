@@ -13,15 +13,8 @@
     margin: 1em 0;
 }
 
-@media (max-width: 670px) {
-    .gh-env-details {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
 .gh-env-list {
-    margin: 0 0 1em 0;
+    margin: 0;
     padding: 0 40px 0 0;
     list-style: none;
 }
@@ -32,6 +25,17 @@
 
 .gh-env-help .btn {
     margin: 5px 0;
+}
+
+@media (max-width: 670px) {
+    .gh-env-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .gh-env-help {
+        margin: 1em 0;
+        max-width: none;
+    }
 }
 
 .gh-credits {
