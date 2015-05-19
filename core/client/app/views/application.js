@@ -3,6 +3,7 @@ import mobileQuery from 'ghost/utils/mobile';
 
 var ApplicationView = Ember.View.extend({
     elementId: 'container',
+    tagName: '',
 
     didInsertElement: function () {
         // #### Navigating within the sidebar closes it.
