@@ -62,7 +62,7 @@
             {{#if view.rolesDropdownIsVisible}}
             <div class="form-group">
                 <label for="user-role">Role</label>
-                {{gh-role-selector
+                {{gh-select-role
                     initialValue=user.role
                     onChange="changeRole"
                     selectId="user-role"}}
