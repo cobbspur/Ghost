@@ -4,10 +4,12 @@ import {request as ajax} from 'ic-ajax';
 export default Ember.Controller.extend(Ember.Evented, {
     uploadButtonText: 'Import',
     importErrors: '',
-
+    importDetails: '',
+    importStatus: '',
+    importProblemsPosts: '',
+    importProblemsTags: '',
     ghostPaths: Ember.inject.service('ghost-paths'),
     notifications: Ember.inject.service(),
-
     labsJSON: Ember.computed('model.labs', function () {
         return JSON.parse(this.get('model.labs') || {});
     }),
@@ -30,12 +32,13 @@ export default Ember.Controller.extend(Ember.Evented, {
     actions: {
         onUpload: function (file) {
             var self = this,
-                formData = new FormData(),
-                notifications = this.get('notifications');
-
+                formData = new FormData();
             this.set('uploadButtonText', 'Importing');
             this.set('importErrors', '');
-            notifications.closePassive();
+            this.set('importDetails', '');
+            this.set('importStatus', '');
+            this.set('importProblemsPosts', '');
+            this.set('importProblemsTags', '');
 
             formData.append('importfile', file);
 
@@ -46,21 +49,23 @@ export default Ember.Controller.extend(Ember.Evented, {
                 cache: false,
                 contentType: false,
                 processData: false
-            }).then(function () {
+            }).then(function (response) {
+                self.set('importStatus', 'Import Successful!');
+                self.set('uploadButtonText', 'Import');
+                self.set('importDetails', response.db[0].meta.details);
+                self.set('importProblemsPosts', response.db[0].meta.problems.posts);
+                self.set('importProblemsTags', response.db[0].meta.problems.tags);
                 // Clear the store, so that all the new data gets fetched correctly.
                 self.store.unloadAll('post');
                 self.store.unloadAll('tag');
                 self.store.unloadAll('user');
                 self.store.unloadAll('role');
                 self.store.unloadAll('setting');
-                self.store.unloadAll('notification');
-                notifications.showSuccess('Import successful.');
             }).catch(function (response) {
                 if (response && response.jqXHR && response.jqXHR.responseJSON && response.jqXHR.responseJSON.errors) {
                     self.set('importErrors', response.jqXHR.responseJSON.errors);
                 }
-
-                notifications.showError('Import Failed');
+                self.set('importStatus', 'Import failed!');
             }).finally(function () {
                 self.set('uploadButtonText', 'Import');
                 self.trigger('reset');
