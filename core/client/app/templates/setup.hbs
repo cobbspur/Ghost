@@ -2,26 +2,43 @@
 
     <header class="gh-flow-head">
         <nav class="gh-flow-nav">
-            {{!-- TODO: this should only appear on screens 2 & 3 --}}
-            <a class="gh-flow-back" href="#"><i class="icon-arrow-left"></i> Back</a>
+            {{#if stepOne}}
             <ol>
-                {{#gh-activating-list-item route="setup.one" linkClasses="step"}}
-                    <i class="icon-check"></i><span class="num">1</span>
-                {{/gh-activating-list-item}}
-                <li class="divider"></li>
-                {{#gh-activating-list-item route="setup.two" linkClasses="step"}}
-                    <i class="icon-check"></i><span class="num">2</span>
-                {{/gh-activating-list-item}}
-                <li class="divider"></li>
-                {{#gh-activating-list-item route="setup.three" linkClasses="step"}}
-                    <i class="icon-check"></i><span class="num">3</span>
-                {{/gh-activating-list-item}}
+                <li class="active"><span class="step"><i class="icon-check"></i><span class="num">1</span></span></li>
+                <li><a class="step" {{action "toStepTwo"}}><i class="icon-check"></i><span class="num">2</span></a></li>
+                <li><span class="step"> <i class="icon-check"></i><span class="num">3</span></span></li>
             </ol>
+            {{/if}}
+            {{#if stepTwo}}
+                <a class="gh-flow-back" {{action "toStepOne"}}><i class="icon-arrow-left"></i>Back</a>
+            <ol>
+                <li><a class="step" {{action "toStepOne"}}> <i class="icon-check"></i><span class="num">1</span></a></li>
+                <li class="active"><span class="step"><i class="icon-check"></i><span class="num">2</span></span></li>
+                <li><a class="step" {{action "toStepThree"}}><i class="icon-check"></i><span class="num">3</span></a></li>
+            </ol>
+            {{/if}}
+            {{#if stepThree}}
+            <ol>
+                <a class="gh-flow-back" {{action "toStepTwo"}}><i class="icon-arrow-left"></i>Back</a>
+                <li><a class="step" {{action "toStepOne"}}> <i class="icon-check"></i><span class="num">1</span></a></li>
+                <li><a class="step" {{action "toStepTwo"}}> <i class="icon-check"></i><span class="num">2</span></a></li>
+                <li class="active"><span class="step"> <i class="icon-check"></i><span class="num">3</span></span></li>
+            </ol>
+            {{/if}}
         </nav>
     </header>
 
     <div class="gh-flow-content-wrap">
-        {{outlet}}
+        {{#if stepOne}}
+            {{gh-setup-step-one nextStep=(action 'toStepTwo')}}
+        {{/if}}
+            {{!--
+        {{#if stepTwo}}
+            {{gh-setup-step-two}}
+        {{/if}}
+        {{#if stepThree}}
+            {{gh-setup-step-three}}
+        {{/if}}
+        --}}
     </div>
-
 </div>

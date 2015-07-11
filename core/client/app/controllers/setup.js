@@ -12,10 +12,38 @@ export default Ember.Controller.extend(ValidationEngine, {
     // ValidationEngine settings
     validationType: 'setup',
 
+    stepOne: true,
+    stepTwo: false,
+    stepThree: false,
+
     ghostPaths: Ember.inject.service('ghost-paths'),
     notifications: Ember.inject.service(),
 
     actions: {
+        toStepOne: function() {
+            this.setProperties({
+                stepOne: true,
+                stepTwo: false,
+                stepThree: false
+            });
+        },
+
+        toStepTwo: function() {
+            this.setProperties({
+                stepOne: false,
+                stepTwo: true,
+                stepThree: false
+            });
+        },
+
+        toStepThree: function() {
+            this.setProperties({
+                stepOne: false,
+                stepTwo: false,
+                stepThree: true
+            });
+        },
+
         setup: function () {
             var self = this,
                 data = self.getProperties('blogTitle', 'name', 'email', 'password'),
