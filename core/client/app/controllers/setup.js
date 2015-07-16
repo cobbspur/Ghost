@@ -15,6 +15,12 @@ export default Ember.Controller.extend(ValidationEngine, {
     ghostPaths: Ember.inject.service('ghost-paths'),
     notifications: Ember.inject.service(),
 
+    stepOne: true,
+    stepTwo: false,
+    stepThree: false,
+    blogCreated: false,
+
+
     actions: {
         setup: function () {
             var self = this,
@@ -48,6 +54,30 @@ export default Ember.Controller.extend(ValidationEngine, {
             }).catch(function (errors) {
                 self.toggleProperty('submitting');
                 notifications.showErrors(errors);
+            });
+        },
+
+        toStepOne: function () {
+            this.setProperties({
+                stepOne: true,
+                stepTwo: false,
+                stepThree: false
+            });
+        },
+
+        toStepTwo: function () {
+            this.setProperties({
+                stepOne: false,
+                stepTwo: true,
+                stepThree: false
+            });
+        },
+
+        toStepThree: function () {
+            this.setProperties({
+                stepOne: false,
+                stepTwo: false,
+                stepThree: true
             });
         }
     }
