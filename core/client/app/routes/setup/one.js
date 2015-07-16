@@ -41,6 +41,11 @@ export default Ember.Route.extend({
         return DownloadCountPoller.create({url: this.get('ghostPaths.count')});
     },
 
+    setupController: function (controller) {
+        this._super(controller);
+        this.controllerFor('setup').send('toStepOne');
+    },
+
     resetController: function (controller, isExiting) {
         if (isExiting) {
             Ember.run.cancel(controller.get('model.runId'));

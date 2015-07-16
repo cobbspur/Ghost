@@ -3,6 +3,7 @@ import {request as ajax} from 'ic-ajax';
 import ValidationEngine from 'ghost/mixins/validation-engine';
 
 export default Ember.Controller.extend(ValidationEngine, {
+    needs: 'setup',
     size: 90,
     blogTitle: null,
     name: null,
@@ -10,7 +11,7 @@ export default Ember.Controller.extend(ValidationEngine, {
     password: null,
     image: null,
     submitting: false,
-
+    blogSetup: false,
     ghostPaths: Ember.inject.service('ghost-paths'),
     notifications: Ember.inject.service(),
     application: Ember.inject.controller(),
@@ -50,14 +51,15 @@ export default Ember.Controller.extend(ValidationEngine, {
             var self = this,
                 data = self.getProperties('blogTitle', 'name', 'email', 'password', 'image'),
                 notifications = this.get('notifications'),
-                config = this.get('config');
+                config = this.get('config'),
+                method = this.get('blogSetup') ? 'PUT' : 'POST';
 
             this.toggleProperty('submitting');
             this.validate().then(function () {
                 self.set('showError', false);
                 ajax({
                     url: self.get('ghostPaths.url').api('authentication', 'setup'),
-                    type: 'POST',
+                    type: method,
                     data: {
                         setup: [{
                             name: data.name,
@@ -76,7 +78,8 @@ export default Ember.Controller.extend(ValidationEngine, {
                         password: self.get('password')
                     }).then(function () {
                         self.set('password', '');
-
+                        self.set('blogSetup', true);
+                        self.get('controllers.setup').set('blogCreated', true);
                         if (data.image) {
                             self.sendImage(result.users[0])
                             .then(function () {

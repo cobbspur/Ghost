@@ -1,9 +1,12 @@
 <div class="gh-flow">
-
     <header class="gh-flow-head">
         <nav class="gh-flow-nav">
-            {{!-- TODO: this should only appear on screens 2 & 3 --}}
-            <a class="gh-flow-back" href="#"><i class="icon-arrow-left"></i> Back</a>
+            {{#if stepTwo}}
+                {{#link-to "setup.one" classNames="gh-flow-back"}}<i class="icon-arrow-left"></i> Back{{/link-to}}
+            {{/if}}
+            {{#if stepThree}}
+                {{#link-to "setup.two" classNames="gh-flow-back"}}<i class="icon-arrow-left"></i> Back{{/link-to}}
+            {{/if}}
             <ol>
                 {{#gh-activating-list-item route="setup.one" linkClasses="step"}}
                     <i class="icon-check"></i><span class="num">1</span>
@@ -13,15 +16,19 @@
                     <i class="icon-check"></i><span class="num">2</span>
                 {{/gh-activating-list-item}}
                 <li class="divider"></li>
-                {{#gh-activating-list-item route="setup.three" linkClasses="step"}}
-                    <i class="icon-check"></i><span class="num">3</span>
-                {{/gh-activating-list-item}}
+                {{#if blogCreated}}
+                    {{#gh-activating-list-item route="setup.three" linkClasses="step"}}
+                        <i class="icon-check"></i><span class="num">3</span>
+                    {{/gh-activating-list-item}}
+                {{else}}
+                    <li><a type="submit" class="step"><i class="icon-check"></i><span class="num">3</span></a></li>
+                {{/if}}
             </ol>
         </nav>
     </header>
-
     <div class="gh-flow-content-wrap">
-        {{outlet}}
+        <section class="gh-flow-content">
+            {{outlet}}
+        </section>
     </div>
-
 </div>
