@@ -458,11 +458,13 @@ CasperTest.begin('Publish menu - existing post', 23, function suite(test) {
             test.assert(false, 'Publish split button works');
         });
     });
+    casper.wait(250);
     // Do unpublish
     casper.thenClick('.js-publish-button');
-
+    casper.wait(250);
     casper.waitForSelector('.gh-notification', function checkPostWasCreated() {
         // ... check status, label, class
+        casper.wait(250);
         casper.waitForSelector('.js-publish-splitbutton .js-publish-button:not([disabled])', function onSuccess() {
             test.assertExists('.js-publish-button.btn-blue', 'Publish button should have .btn-blue');
             test.assertSelectorHasText('.js-publish-button', 'Save Draft', '.js-publish-button says Save Draft');
