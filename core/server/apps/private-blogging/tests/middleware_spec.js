@@ -311,7 +311,7 @@ describe('Private Blogging', function () {
             };
         });
 
-        it ('sets an error when there is no password', function (done) {
+        it.skip ('sets an error when there is no password', function (done) {
             req.body = {};
 
             privateBlogging.spamPrevention(req, res, spyNext);
@@ -321,7 +321,7 @@ describe('Private Blogging', function () {
             done();
         });
 
-        it ('sets and error message after 10 tries', function (done) {
+        it.skip ('sets and error message after 10 tries', function (done) {
             var ndx;
 
             for (ndx = 0; ndx < 10; ndx = ndx + 1) {
@@ -336,7 +336,7 @@ describe('Private Blogging', function () {
             done();
         });
 
-        it ('allows more tries after an hour', function (done) {
+        it.skip ('allows more tries after an hour', function (done) {
             var ndx,
                 stub = sinon.stub(process, 'hrtime', function () {
                     return [10, 10];

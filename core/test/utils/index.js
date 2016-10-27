@@ -405,6 +405,10 @@ initData = function initData() {
     return knexMigrator.init();
 };
 
+clearBruteData = function clearBruteData() {
+    return db.knex('brute').truncate();
+}
+
 clearData = function clearData() {
     // we must always try to delete all tables
     return migration.reset();
@@ -676,6 +680,7 @@ module.exports = {
     initFixtures: initFixtures,
     initData: initData,
     clearData: clearData,
+    clearBruteData: clearBruteData,
 
     mocks: mocks,
 

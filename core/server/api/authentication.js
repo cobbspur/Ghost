@@ -13,6 +13,7 @@ var _                = require('lodash'),
     events           = require('../events'),
     config           = require('../config'),
     i18n             = require('../i18n'),
+    spamPrevention   = require('../middleware/api/spam-prevention'),
     authentication,
     tokenSecurity = {};
 
@@ -269,7 +270,6 @@ authentication = {
      */
     resetPassword: function resetPassword(object) {
         var tasks, tokenIsCorrect, dbHash, options = {context: {internal: true}}, tokenParts;
-
         function validateRequest() {
             return utils.validate('passwordreset')(object, options)
                 .then(function (options) {
@@ -291,12 +291,13 @@ authentication = {
             tokenParts = globalUtils.tokens.resetToken.extract({
                 token: options.data.passwordreset[0].token
             });
-
             if (!tokenParts) {
                 return Promise.reject(new errors.UnauthorizedError({
                     message: i18n.t('errors.api.common.invalidTokenStructure')
                 }));
             }
+
+            spamPrevention.userLogin.reset(null, options.data.connection + tokenParts.email + 'login');
 
             return Promise.resolve(options);
         }
