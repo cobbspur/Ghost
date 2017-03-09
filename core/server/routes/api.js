@@ -56,6 +56,7 @@ apiRoutes = function apiRoutes(middleware) {
 
     // ## Schedules
     router.put('/schedules/posts/:id', [middleware.api.authenticateClient, middleware.api.authenticateUser], api.http(api.schedules.publishPost));
+    router.put('/schedules/posts/:id', [middleware.api.authenticateClient, middleware.api.authenticateUser], api.http(api.schedules.publishPost));
 
     // ## Settings
     router.get('/settings', authenticatePrivate, api.http(api.settings.browse));
@@ -138,6 +139,8 @@ apiRoutes = function apiRoutes(middleware) {
         api.http(api.db.importContent)
     );
     router.del('/db', authenticatePrivate, api.http(api.db.deleteAllContent));
+    // Special endpoint for Moya to trigger a database export
+    router.post('/db/archive', middleware.api.authenticateClient, api.http(api.db.archiveContent));
 
     // ## Mail
     router.post('/mail', authenticatePrivate, api.http(api.mail.send));

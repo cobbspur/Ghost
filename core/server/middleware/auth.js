@@ -37,6 +37,8 @@ auth = {
         if (isBearerAutorizationHeader(req)) {
             return next();
         }
+        console.log(req.query.client_id)
+        console.log(req.query.client_secret)
 
         if (req.query && req.query.client_id) {
             req.body.client_id = req.query.client_id;
@@ -57,6 +59,8 @@ auth = {
 
         return passport.authenticate(['oauth2-client-password'], {session: false, failWithError: false},
             function authenticate(err, client) {
+                console.log('client', client)
+                console.log('err', err)
                 if (err) {
                     return next(err); // will generate a 500 error
                 }

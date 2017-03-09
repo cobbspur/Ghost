@@ -21,6 +21,30 @@ api.settings         = require('./settings');
  */
 db = {
     /**
+     * ### Archive Content
+     * Generate the JSON to export
+     *
+     * @public
+     * @param {{context}} options
+     * @returns {Promise} Ghost Export JSON format
+     */
+    archiveContent: function (options) {
+        var tasks = [];
+
+        options = options || {};
+        console.log('context', context)
+        if (!options.context || !options.context.client || options.context.client !== 'ghost-scheduler') {
+            return Promise.reject(new errors.NoPermissionError({message: i18n.t('errors.permissions.noPermissionToAction')}));
+        }
+
+        tasks = [
+            utils.handlePermissions(docName, 'exportContent'),
+            backupDatabase
+        ];
+
+        return pipeline(tasks, options);
+    },
+    /**
      * ### Export Content
      * Generate the JSON to export
      *
